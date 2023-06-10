@@ -8,71 +8,94 @@
 </head>
 <body>
     <script>  
-        let computerSelection = getComputerChoice();
-        let player = playerSelection();
-        let playerScore = 0;
-        let computerScore = 0;
-        playRound(computerSelection, player, playerScore, computerScore);
+        // The computer and the player play the game
+        game();
+
+        function game() { 
+            // The 
+            let i = 1
+            let playerScore = 0;
+            let computerScore = 0;
+            
 
 
-        // Computer make a randon choice
-        function getComputerChoice (computerSelection) {
-            let num = Math.floor(Math.random() * 3);
-            const computerOptions = ["rock", "paper", "scissors"];
-            computerSelection = (computerOptions[num]);
-            return computerSelection;
-        }
+            for (i; i <= 5; i++) {   
+                let computerSelection = getComputerChoice();
+                let player = playerSelection();
+                
+                // The computer make a randon choice
+                function getComputerChoice (computerSelection) {
+                    let num = Math.floor(Math.random() * 3);
+                    const computerOptions = ["rock", "paper", "scissors"];
+                    computerSelection = (computerOptions[num]);
+                    return computerSelection;
+                }
 
-        // Player choose their options
-        function playerSelection (player) {
-            player = prompt("Rock, Paper, or Scissors. Enter one of the 3 options: ");
-            return player.toLowerCase();
-        }
+                // The player choose their options
+                function playerSelection (player) {
+                    player = prompt("Rock, Paper, or Scissors. Enter one of the 3 options: ");
+                    return player.toLowerCase();
+                }
 
-        // Computer and Player play the game
-        function playRound (computerSelection, player) {
+                // Rounds and results
+                playRound(computerSelection, player);
+                function playRound (computerSelection, player) {   
+                    switch (player + '=' + computerSelection) {
+                    // The player win
+                        case ('scissors=paper'):
+                            alert("You Win! Scissors beats Paper");
+                            playerScore++;
+                            break;  
 
+                        case ('paper=rock'):
+                            alert("You Win! Paper beats Rock");
+                            playerScore++;
+                            break;  
 
-            switch (player + '=' + computerSelection) {
-            // Player wins
-                case ('scissors=paper'):
-                    alert("You Win! Scissors beats Paper");
-                    playerScore++;
-                    break;
+                        case ('rock=scissors'):
+                            alert("You Win! Rock beats Scissors");
+                            playerScore++;
+                            break;  
+                
+                    // The computer win
+                        case ('paper=scissors'):
+                            alert("You Lose! Scissors beats Paper");
+                            computerScore++;
+                            break;    
 
-                case ('paper=rock'):
-                    alert("You Win! Paper beats Rock");
-                    playerScore++;
-                    break;
+                        case ('rock=paper'):
+                            alert("You Lose! Paper beats Rock");
+                            computerScore++;
+                            break;  
 
-                case ('rock=scissors'):
-                    alert("You Win! Rock beats Scissors");
-                    playerScore++;
-                    break;
-        
-            // Computer wins
-                case ('paper=scissors'):
-                    alert("You Lose! Scissors beats Paper");
-                    computerScore++;
-                    break;    
+                        case ('scissors=rock'):
+                            alert("You Lose! Rock beats Scissors");
+                            computerScore++;
+                            break;   
+                    }
 
-                case ('rock=paper'):
-                    alert("You Lose! Paper beats Rock");
-                    computerScore++;
-                    break;  
-
-                case ('scissors=rock'):
-                    alert("You Lose! Rock beats Scissors");
-                    computerScore++;
-                    break;   
+                    if (player === computerSelection) {
+                        alert('Tie');
+                    }
+                    
+                    // Result of the rounds and scores
+                    console.log('Round: ' + i + ' Player Scores: ' + playerScore + ' Computer Scores: ' + computerScore)
+                } 
+            }           
+            
+            // Result of the game between the player and the computer
+            if (i == 6) {
+                if (playerScore > computerScore) {
+                    console.log('Player Win!');
+                }
+                else if (playerScore < computerScore) {
+                    console.log('Computer Win!');
+                }
+                else if (playerScore === computerScore){
+                    console.log('it is a Tie!');
+                }
             }
-
-            if (player === computerSelection) {
-                alert('Tie');
-            }
-
         }
-
     </script>
 </body>
 </html>
