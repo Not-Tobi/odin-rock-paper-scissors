@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>  
+        let computerSelection = getComputerChoice();
+        let player = playerSelection();
+
+        function getComputerChoice (computerSelection) {
+            let num = Math.floor(Math.random() * 3);
+            const computerOptions = ["rock", "paper", "scissors"];
+            computerSelection = (computerOptions[num]);
+            return computerSelection;
+        }
+
+        function playerSelection (player) {
+            player = prompt("Rock, Paper, or Scissors. Enter one of the 3 options: ");
+            return player.toLowerCase();
+        }
+
+        function round (computerSelection, player) {
+
+        }
+
+    </script>
+</body>
+</html>
