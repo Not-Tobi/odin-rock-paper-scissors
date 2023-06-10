@@ -10,7 +10,12 @@
     <script>  
         let computerSelection = getComputerChoice();
         let player = playerSelection();
+        let playerScore = 0;
+        let computerScore = 0;
+        playRound(computerSelection, player, playerScore, computerScore);
 
+
+        // Computer make a randon choice
         function getComputerChoice (computerSelection) {
             let num = Math.floor(Math.random() * 3);
             const computerOptions = ["rock", "paper", "scissors"];
@@ -18,12 +23,53 @@
             return computerSelection;
         }
 
+        // Player choose their options
         function playerSelection (player) {
             player = prompt("Rock, Paper, or Scissors. Enter one of the 3 options: ");
             return player.toLowerCase();
         }
 
-        function round (computerSelection, player) {
+        // Computer and Player play the game
+        function playRound (computerSelection, player) {
+
+
+            switch (player + '=' + computerSelection) {
+            // Player wins
+                case ('scissors=paper'):
+                    alert("You Win! Scissors beats Paper");
+                    playerScore++;
+                    break;
+
+                case ('paper=rock'):
+                    alert("You Win! Paper beats Rock");
+                    playerScore++;
+                    break;
+
+                case ('rock=scissors'):
+                    alert("You Win! Rock beats Scissors");
+                    playerScore++;
+                    break;
+        
+            // Computer wins
+                case ('paper=scissors'):
+                    alert("You Lose! Scissors beats Paper");
+                    computerScore++;
+                    break;    
+
+                case ('rock=paper'):
+                    alert("You Lose! Paper beats Rock");
+                    computerScore++;
+                    break;  
+
+                case ('scissors=rock'):
+                    alert("You Lose! Rock beats Scissors");
+                    computerScore++;
+                    break;   
+            }
+
+            if (player === computerSelection) {
+                alert('Tie');
+            }
 
         }
 
