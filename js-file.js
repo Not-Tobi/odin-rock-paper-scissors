@@ -39,43 +39,44 @@ function getComputerChoice (computerSelection) {
 } 
 
 // Rounds and results
-function playRound (buttons) {   
+function playRound (buttons) { 
+    let roundResult = document.querySelector('.roundResult');  
     switch (player + '=' + computerSelection) {
     // The player win
         case ('scissors=paper'):
-            alert("You Win! Scissors beats Paper");
+            roundResult.textContent = "You Win the Round! Scissors beats Paper";
             playerScore++;
             break;  
 
         case ('paper=rock'):
-            alert("You Win! Paper beats Rock");
+            roundResult.textContent = "You Win the Round! Paper beats Rock";
             playerScore++;
             break;  
 
         case ('rock=scissors'):
-            alert("You Win! Rock beats Scissors");
+            roundResult.textContent = "You Win the Round! Rock beats Scissors";
             playerScore++;
             break;  
     
     // The computer win
         case ('paper=scissors'):
-            alert("You Lose! Scissors beats Paper");
+            roundResult.textContent = "You Lose the Round! Scissors beats Paper";
             computerScore++;
             break;    
 
         case ('rock=paper'):
-            alert("You Lose! Paper beats Rock");
+            roundResult.textContent = "You Lose the Round! Paper beats Rock";
             computerScore++;
             break;  
 
         case ('scissors=rock'):
-            alert("You Lose! Rock beats Scissors");
+            roundResult.textContent = "You Lose the Round! Rock beats Scissors";
             computerScore++;
             break;  
     
     // Tie
         default:
-            alert('Tie');
+            roundResult.textContent = "Tie";
     }
     //Rounds
     i++; 
@@ -124,12 +125,12 @@ function playRound (buttons) {
             playerScore = 0;
             computerScore = 0; 
             i = 0;
+            roundResult.textContent = '';
             finalResult.textContent = '';
             changeDisplay();
             lastBox.removeChild(resetBtnCreated);
         })
     }
-
 }     
             
 
