@@ -5,97 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js-file.js" defer></script>
 </head>
 <body>
-    <script>  
-        // The computer and the player play the game
-        game();
+    <h1>Rock Paper Scissors</h1>
 
-        function game() { 
-            // The 
-            let i = 1
-            let playerScore = 0;
-            let computerScore = 0;
-            
+    <h2 class="round">Round: 0</h1>
+        
+    <h2 class="playerScoreDisplay">Player Scores: 0</h1>
+    <h2 class="computerScoreDisplay">Computer Scores: 0</h2>
 
+    <div class="playerButtons">
+        <button class="btn rock">Rock</button>
+        <button class="btn paper">Paper</button>
+        <button class="btn scissors">Scissors</button>
+    </div>
 
-            for (i; i <= 5; i++) {   
-                let computerSelection = getComputerChoice();
-                let player = playerSelection();
-                
-                // The computer make a randon choice
-                function getComputerChoice (computerSelection) {
-                    let num = Math.floor(Math.random() * 3);
-                    const computerOptions = ["rock", "paper", "scissors"];
-                    computerSelection = (computerOptions[num]);
-                    return computerSelection;
-                }
-
-                // The player choose their options
-                function playerSelection (player) {
-                    player = prompt("Rock, Paper, or Scissors. Enter one of the 3 options: ");
-                    return player.toLowerCase();
-                }
-
-                // Rounds and results
-                playRound(computerSelection, player);
-                function playRound (computerSelection, player) {   
-                    switch (player + '=' + computerSelection) {
-                    // The player win
-                        case ('scissors=paper'):
-                            alert("You Win! Scissors beats Paper");
-                            playerScore++;
-                            break;  
-
-                        case ('paper=rock'):
-                            alert("You Win! Paper beats Rock");
-                            playerScore++;
-                            break;  
-
-                        case ('rock=scissors'):
-                            alert("You Win! Rock beats Scissors");
-                            playerScore++;
-                            break;  
-                
-                    // The computer win
-                        case ('paper=scissors'):
-                            alert("You Lose! Scissors beats Paper");
-                            computerScore++;
-                            break;    
-
-                        case ('rock=paper'):
-                            alert("You Lose! Paper beats Rock");
-                            computerScore++;
-                            break;  
-
-                        case ('scissors=rock'):
-                            alert("You Lose! Rock beats Scissors");
-                            computerScore++;
-                            break;   
-                    }
-
-                    if (player === computerSelection) {
-                        alert('Tie');
-                    }
-                    
-                    // Result of the rounds and scores
-                    console.log('Round: ' + i + ' Player Scores: ' + playerScore + ' Computer Scores: ' + computerScore)
-                } 
-            }           
-            
-            // Result of the game between the player and the computer
-            if (i == 6) {
-                if (playerScore > computerScore) {
-                    console.log('Player Win!');
-                }
-                else if (playerScore < computerScore) {
-                    console.log('Computer Win!');
-                }
-                else if (playerScore === computerScore){
-                    console.log('it is a Tie!');
-                }
-            }
-        }
-    </script>
+    <div class='lastBox'>
+        <h2 class="finalResult">Final Result:</h1>
+    </div>
 </body>
 </html>
