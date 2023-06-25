@@ -81,13 +81,16 @@ function playRound (buttons) {
     i++; 
 
     // Result of the rounds and scores
-    let round = document.querySelector('.round');
-    let playerScoreDisplay = document.querySelector('.playerScoreDisplay');
-    let computerScoreDisplay = document.querySelector('.computerScoreDisplay');
+    changeDisplay();
+    function changeDisplay() {
+        let round = document.querySelector('.round');
+        let playerScoreDisplay = document.querySelector('.playerScoreDisplay');
+        let computerScoreDisplay = document.querySelector('.computerScoreDisplay');
 
-    round.textContent = 'Round: ' + i;
-    playerScoreDisplay.textContent = 'Player Scores: ' + playerScore;
-    computerScoreDisplay.textContent = 'Computer Scores: ' + computerScore;
+        round.textContent = 'Round: ' + i;
+        playerScoreDisplay.textContent = 'Player Scores: ' + playerScore;
+        computerScoreDisplay.textContent = 'Computer Scores: ' + computerScore;
+    }
 
     // Result of the game between the player and the computer
     // Display the button to reset the game
@@ -105,11 +108,26 @@ function playRound (buttons) {
         }
     }
 
+    // Reset game
     function resetGame() {
-        const resetBtn = document.createElement('button');
+        // Create the reset button
         const lastBox = document.querySelector('.lastBox');
-        lastBox.appendChild(resetBtn);
-        resetBtn.textContent = 'Play Again';
+        const resetBtnCreated = document.createElement('button');
+        lastBox.appendChild(resetBtnCreated);
+        resetBtnCreated.textContent = 'Play Again';
+        resetBtnCreated.classList.add('resetBtn');
+
+        // Reset button in affect
+        const resetBtn = document.querySelector('.resetBtn');
+        resetBtn.addEventListener('click', () => {
+            btn.forEach((buttons) => {buttons.disabled = false;})
+            playerScore = 0;
+            computerScore = 0; 
+            i = 0;
+            finalResult.textContent = '';
+            changeDisplay();
+            lastBox.removeChild(resetBtnCreated);
+        })
     }
 
 }     
