@@ -4,28 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Odin Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
     <script src="js-file.js" defer></script>
 </head>
+
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <div class="header">
+        <div class="title">Rock Paper Scissors</div>
+        <div class="round">Round: 1</div>
+        <div class="roundResult">First Person Reach 5 Points Win</div>
+    </div>    
 
-    <h2 class="round">Round: 0</h1>
-        
-    <h2 class="playerScoreDisplay">Player Scores: 0</h1>
-    <h2 class="computerScoreDisplay">Computer Scores: 0</h2>
+    <div class="score">
+        <div class="playerScoreAndButtons">
+            <div class="playerScoreDisplay">Player Scores: 0</div>
+            <div class="playerButtons">
+                <button class="btn rock"><img src ="images/rock" alt="rock"></button>
+                <button class="btn paper"><img src ="images/paper" alt="paper"></button>
+                <button class="btn scissors"><img src ="images/scissors" alt="scissors"></button>
+            </div>
+        </div>
 
-    <div class="playerButtons">
-        <button class="btn rock">Rock</button>
-        <button class="btn paper">Paper</button>
-        <button class="btn scissors">Scissors</button>
+        <div class="computerScoreAndImage">
+            <div class="computerScoreDisplay">Computer Scores: 0</div>
+            <div class="computerBorder"><img src ="images/robot" class="computerImage"></div>
+        </div>
     </div>
 
-    <h2 class="roundResult"></h2>
-
-    <div class='lastBox'>
-        <h2 class="finalResult"></h1>
+    <div class='gameResult'>
+        <div class="finalResult"></div>
+    </div>
+  
+    <div class="footer">
+        <p>Made By Not-Tobi</p>
     </div>
 </body>
 </html>

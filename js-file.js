@@ -1,5 +1,5 @@
 // The computer and the player play the game
-let i = 0 //Rounds
+let i = 1; //Rounds
 let playerScore = 0;
 let computerScore = 0;
 
@@ -35,6 +35,12 @@ function getComputerChoice (computerSelection) {
     let num = Math.floor(Math.random() * 3);
     const computerOptions = ["rock", "paper", "scissors"];
     computerSelection = (computerOptions[num]);
+
+    // Display the computer's choice using an image
+    const computerImage = document.querySelector('.computerImage');
+    computerImage.style.transform = 'scaleX(-1)';
+    computerImage.setAttribute('src', `images/${computerSelection}`)
+
     return computerSelection;
 } 
 
@@ -78,10 +84,9 @@ function playRound (buttons) {
         default:
             roundResult.textContent = "Tie";
     }
-    //Rounds
     i++; 
 
-    // Result of the rounds and scores
+    // Result of the rounds
     changeDisplay();
     function changeDisplay() {
         let round = document.querySelector('.round');
@@ -100,11 +105,11 @@ function playRound (buttons) {
     if (playerScore == 5 || computerScore == 5) {
         btn.forEach((buttons) => {buttons.disabled = true;}) 
         if (playerScore == 5) {
-            finalResult.textContent = 'Final Result: Player Win!'
+            finalResult.textContent = 'You Win!'
             resetGame();
         }
         else if (computerScore == 5) {
-            finalResult.textContent = 'Final Result: Computer Win!'
+            finalResult.textContent = 'Computer Win!'
             resetGame();
         }
     }
@@ -112,7 +117,7 @@ function playRound (buttons) {
     // Reset game
     function resetGame() {
         // Create the reset button
-        const lastBox = document.querySelector('.lastBox');
+        const lastBox = document.querySelector('.gameResult');
         const resetBtnCreated = document.createElement('button');
         lastBox.appendChild(resetBtnCreated);
         resetBtnCreated.textContent = 'Play Again';
@@ -122,10 +127,12 @@ function playRound (buttons) {
         const resetBtn = document.querySelector('.resetBtn');
         resetBtn.addEventListener('click', () => {
             btn.forEach((buttons) => {buttons.disabled = false;})
+            const computerImage = document.querySelector('.computerImage');
+            computerImage.setAttribute('src','images/robot')
+            roundResult.textContent = "First Person Reach 5 Points Win";
             playerScore = 0;
             computerScore = 0; 
-            i = 0;
-            roundResult.textContent = '';
+            i = 1;
             finalResult.textContent = '';
             changeDisplay();
             lastBox.removeChild(resetBtnCreated);
