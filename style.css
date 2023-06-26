@@ -1,0 +1,104 @@
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #EFEEDE;
+    color: #74A12E;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+img {
+    width: 170px;
+    height: 170px;
+}
+
+/* Title And Round And Round Result */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin: 15px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.round, .roundResult, .playerScoreDisplay, .computerScoreDisplay {
+    font-size: 40px;
+    color: black;
+}
+
+/* Gameplay */
+.score {
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.computerBorder {
+    border: solid 5px black;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin: 0 10px;
+    background-color: transparent;
+    border: solid 5px #74A12E;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+.computerScoreAndImage {
+    margin: 0 250px;
+}
+
+.playerScoreAndButtons, .computerScoreAndImage {
+    gap: 50px;
+}
+
+.playerScoreAndButtons, .computerScoreAndImage, .gameResult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Game End */
+.gameResult {
+    gap: 20px;
+}
+
+.finalResult, .resetBtn {
+    font-size: 40px;
+}
+
+.resetBtn {
+    background-color: transparent;
+    border-radius: 10px;
+    border: solid 5px #74A12E;
+}
+
+.resetBtn:hover, .btn:hover {
+    transform: scale(1.1);
+    border-color: white;
+    color:white;
+    box-shadow: 0 0 10px black;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #74A12E;
+    color: white;
+}
