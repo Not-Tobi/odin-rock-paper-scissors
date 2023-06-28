@@ -51,7 +51,7 @@ img {
 }
 
 .btn {
-    margin: 0 10px;
+    margin: 10px 10px;
     background-color: transparent;
     border: solid 5px #74A12E;
     border-radius: 50%;
@@ -75,7 +75,8 @@ img {
 
 /* Game End */
 .gameResult {
-    gap: 20px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .finalResult, .resetBtn {
@@ -97,6 +98,7 @@ img {
 
 /* Footer */
 .footer {
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     background-color: #74A12E;
