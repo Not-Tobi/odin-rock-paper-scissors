@@ -1,17 +1,19 @@
 // The computer and the player play the game
-let i = 1; //Rounds
+let i = 0; //Rounds
 let playerScore = 0;
 let computerScore = 0;
 let computerSelection;
 let player;    
-
+let playerTracker = new Array();
+let sameMove;
 // The player choose their options and start the round
 const btn = document.querySelectorAll('button');
 
 btn.forEach((buttons) => {
     buttons.addEventListener('click', () => {
+        playerSelection(buttons);
         computerSelection = getComputerChoice();
-        playRound(playerSelection(buttons));
+        playRound(buttons);
     })
 })
 
@@ -27,17 +29,48 @@ function playerSelection (buttons) {
     }
 }
 
-// The computer make a randon choice
+// The computer make a choice
 function getComputerChoice (computerSelection) {
+    playerTracker.push(player);
+    // Display the computer's choice using an image
+    function computerImageUpdate () {
+        const computerImage = document.querySelector('.computerImage');
+        computerImage.style.transform = 'scaleX(-1)';
+        computerImage.setAttribute('src', `images/${computerSelection}`)
+    }
+    
+    // Reset playerTracker
+    function resetPlayerTracker () {
+        for (let c = 0; c < player.length; c++) {
+            playerTracker.pop();
+        }
+    }
+
+    // Change computer move if the player play the same move often
+    if (playerTracker.length === 3 && playerTracker[0] === playerTracker[1] && playerTracker[0] === playerTracker[2]) {
+        console.log('hi')
+        if (player === 'rock') {
+            computerSelection = 'paper'
+        }
+        else if (player === 'paper') {
+            computerSelection = 'scissors'
+        }
+        else if (player === 'scissors') {
+            computerSelection = 'rock'
+        }
+        resetPlayerTracker();
+        computerImageUpdate();
+        return computerSelection
+    }
+
+    else if (playerTracker.length === 3) {
+        resetPlayerTracker();
+    }
+    
     let num = Math.floor(Math.random() * 3);
     const computerOptions = ["rock", "paper", "scissors"];
     computerSelection = (computerOptions[num]);
-
-    // Display the computer's choice using an image
-    const computerImage = document.querySelector('.computerImage');
-    computerImage.style.transform = 'scaleX(-1)';
-    computerImage.setAttribute('src', `images/${computerSelection}`)
-
+    computerImageUpdate();
     return computerSelection;
 } 
 
@@ -81,7 +114,7 @@ function playRound (buttons) {
     }
 
     // Change round and scores
-    i++; 
+    i++
     changeMainDisplay();
     function changeMainDisplay() {
         let round = document.querySelector('.round');
@@ -126,7 +159,7 @@ function playRound (buttons) {
             roundResult.textContent = "First Person Reach 5 Points Win";
             playerScore = 0;
             computerScore = 0; 
-            i = 1;
+            i = 0;
             finalResult.textContent = '';
             changeMainDisplay();
             lastBox.removeChild(resetBtnCreated);
