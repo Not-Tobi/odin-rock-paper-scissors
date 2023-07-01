@@ -2,8 +2,6 @@
 let i = 1; //Rounds
 let playerScore = 0;
 let computerScore = 0;
-
-
 let computerSelection;
 let player;    
 
@@ -12,9 +10,8 @@ const btn = document.querySelectorAll('button');
 
 btn.forEach((buttons) => {
     buttons.addEventListener('click', () => {
-        playerSelection(buttons);
         computerSelection = getComputerChoice();
-        playRound(buttons);
+        playRound(playerSelection(buttons));
     })
 })
 
@@ -46,49 +43,47 @@ function getComputerChoice (computerSelection) {
 
 // Rounds and results
 function playRound (buttons) { 
-    let roundResult = document.querySelector('.roundResult');  
-    switch (player + '=' + computerSelection) {
-    // The player win
-        case ('scissors=paper'):
-            roundResult.textContent = "You Win the Round! Scissors beats Paper";
-            playerScore++;
-            break;  
-
-        case ('paper=rock'):
-            roundResult.textContent = "You Win the Round! Paper beats Rock";
-            playerScore++;
-            break;  
-
-        case ('rock=scissors'):
-            roundResult.textContent = "You Win the Round! Rock beats Scissors";
-            playerScore++;
-            break;  
-    
-    // The computer win
-        case ('paper=scissors'):
-            roundResult.textContent = "You Lose the Round! Scissors beats Paper";
-            computerScore++;
-            break;    
-
-        case ('rock=paper'):
-            roundResult.textContent = "You Lose the Round! Paper beats Rock";
-            computerScore++;
-            break;  
-
-        case ('scissors=rock'):
-            roundResult.textContent = "You Lose the Round! Rock beats Scissors";
-            computerScore++;
-            break;  
-    
-    // Tie
-        default:
-            roundResult.textContent = "Tie";
+    let roundResult = document.querySelector('.roundResult'); 
+    if (player === 'scissors' && computerSelection === 'paper') 
+    {
+        roundResult.textContent = "You Win the Round! " + changeDisplayResult();
+        playerScore++;
     }
-    i++; 
+    else if (player === 'paper' && computerSelection === 'rock') 
+    {
+        roundResult.textContent = "You Win the Round! " + changeDisplayResult();
+        playerScore++;
+    }
+    else if (player === 'rock' && computerSelection === 'scissors') 
+    {
+        roundResult.textContent = "You Win the Round! " + changeDisplayResult();
+        playerScore++;
+    }
+    else if (player === computerSelection) 
+    {
+        roundResult.textContent = "Tie";
+    }
+    else {
+        roundResult.textContent = "You Lose the Round! " + changeDisplayResult();
+        computerScore++;
+    }
+   
+    function changeDisplayResult() { 
+        if ((player === 'scissors' && computerSelection === 'paper')  || (computerSelection === 'scissors' && player === 'paper')) {
+            return "Scissors beats paper"
+        }
+        else if ((player === 'paper' && computerSelection === 'rock') || (computerSelection === 'paper' && player === 'rock')) {
+            return "Paper beats Rock"
+        }
+        else if ((player === 'rock' && computerSelection === 'scissors')  || (computerSelection === 'rock' && player === 'scissors')) {
+            return "Rock beats Scissors"
+        }
+    }
 
-    // Result of the rounds
-    changeDisplay();
-    function changeDisplay() {
+    // Change round and scores
+    i++; 
+    changeMainDisplay();
+    function changeMainDisplay() {
         let round = document.querySelector('.round');
         let playerScoreDisplay = document.querySelector('.playerScoreDisplay');
         let computerScoreDisplay = document.querySelector('.computerScoreDisplay');
@@ -99,7 +94,6 @@ function playRound (buttons) {
     }
 
     // Result of the game between the player and the computer
-    // Display the button to reset the game
     let finalResult = document.querySelector('.finalResult');
 
     if (playerScore == 5 || computerScore == 5) {
@@ -108,7 +102,7 @@ function playRound (buttons) {
             finalResult.textContent = 'You Win!'
             resetGame();
         }
-        else if (computerScore == 5) {
+        else {
             finalResult.textContent = 'Computer Win!'
             resetGame();
         }
@@ -134,12 +128,8 @@ function playRound (buttons) {
             computerScore = 0; 
             i = 1;
             finalResult.textContent = '';
-            changeDisplay();
+            changeMainDisplay();
             lastBox.removeChild(resetBtnCreated);
         })
     }
 }     
-            
-
-
-
