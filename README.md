@@ -3,3 +3,4 @@ This project will be creating a rock, paper, and scissors game. This project wil
 
 Image Citations:
 Pinclipart https://www.pinclipart.com/
+GoodFreePhotos https://www.goodfreephotos.com/

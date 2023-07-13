@@ -1,7 +1,7 @@
 body {
     font-family: Roboto, sans-serif;
-    background-color: white;
-    color: #74A12E;
+    background-color: #adc69d;
+    color: white;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -30,7 +30,7 @@ img {
 
 .round, .roundResult, .playerScoreDisplay, .computerScoreDisplay {
     font-size: 40px;
-    color: #2A4930;
+    color: white;
 }
 
 /* Gameplay */
@@ -41,7 +41,8 @@ img {
 }
 
 .computerBorder {
-    border: solid 5px #2A4930;
+    border: solid 5px white;
+    background-color: #335139;
     border-radius: 50%;
     width: 250px;
     height: 250px;
@@ -53,7 +54,7 @@ img {
 .btn {
     margin: 10px 10px;
     background-color: transparent;
-    border: solid 5px #74A12E;
+    border: solid 5px white;
     border-radius: 50%;
     width: 250px;
     height: 250px;
@@ -84,16 +85,16 @@ img {
 }
 
 .resetBtn {
-    color: #2A4930;
+    color: white;
     background-color: transparent;
     border-radius: 10px;
-    border: solid 5px #74A12E;
+    border: solid 5px white;
 }
 
 .resetBtn:hover, .btn:hover {
     transform: scale(1.1);
     border-color: white;
-    color:#2A4930;
+    color: white;
     box-shadow: 0 0 10px black;
 }
 
@@ -106,6 +107,6 @@ img {
     padding: 10px 0;
     display: flex;
     justify-content: center;
-    background-color: #74A12E;
-    color: white;
+    background-color: white;
+    color: #adc69d;
 }
