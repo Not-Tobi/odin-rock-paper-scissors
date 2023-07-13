@@ -1,6 +1,6 @@
 body {
     font-family: Roboto, sans-serif;
-    background-color: #EFEEDE;
+    background-color: white;
     color: #74A12E;
     margin: 0;
     padding: 0;
@@ -30,7 +30,7 @@ img {
 
 .round, .roundResult, .playerScoreDisplay, .computerScoreDisplay {
     font-size: 40px;
-    color: black;
+    color: #2A4930;
 }
 
 /* Gameplay */
@@ -41,7 +41,7 @@ img {
 }
 
 .computerBorder {
-    border: solid 5px black;
+    border: solid 5px #2A4930;
     border-radius: 50%;
     width: 250px;
     height: 250px;
@@ -84,6 +84,7 @@ img {
 }
 
 .resetBtn {
+    color: #2A4930;
     background-color: transparent;
     border-radius: 10px;
     border: solid 5px #74A12E;
@@ -92,8 +93,12 @@ img {
 .resetBtn:hover, .btn:hover {
     transform: scale(1.1);
     border-color: white;
-    color:white;
+    color:#2A4930;
     box-shadow: 0 0 10px black;
+}
+
+.btn:active {
+    transform: translatex(1px);
 }
 
 /* Footer */
